@@ -8,26 +8,14 @@ class Display(ABC):
         pass
 
 
-class ConsoleDisplay(Display):
-    def __init__(self, display_type: str) -> None:
-        self.display_type = display_type
-
-    def display(self, book: Book) -> str:
-        if self.display_type == "console":
-            print(book.content)
-        else:
-            raise ValueError(f"Unknown display type: {self.display_type}")
+class DisplayConsole(Display):
+    def display(self, book: Book) -> None:
+        print(book.content)
 
 
-class ReverseDisplay(Display):
-    def __init__(self, display_type: str) -> None:
-        self.display_type = display_type
-
-    def display(self, book: Book) -> str:
-        if self.display_type == "reverse":
-            print(book.content[::-1])
-        else:
-            raise ValueError(f"Unknown display type: {self.display_type}")
+class DisplayReverse(Display):
+    def display(self, book: Book) -> None:
+        print(book.content[::-1])
 
 
 class Print(ABC):
@@ -36,25 +24,13 @@ class Print(ABC):
         pass
 
 
-class ConsolePrint(Print):
-    def __init__(self, print_type: str) -> None:
-        self.print_type = print_type
-
-    def print_book(self, book: Book) -> str:
-        if self.print_type == "console":
-            print(f"Printing the book: {book.title}...")
-            print(book.content)
-        else:
-            raise ValueError(f"Unknown print type: {self.print_type}")
+class PrintConsole(Print):
+    def print_book(self, book: Book) -> None:
+        print(f"Printing the book: {book.title}...")
+        print(book.content)
 
 
-class ReversePrint(Print):
-    def __init__(self, print_type: str) -> None:
-        self.print_type = print_type
-
-    def print_book(self, book: Book) -> str:
-        if self.print_type == "reverse":
-            print(f"Printing the book in reverse: {book.title}...")
-            print(book.content[::-1])
-        else:
-            raise ValueError(f"Unknown print type: {self.print_type}")
+class PrintReverse(Print):
+    def print_book(self, book: Book) -> None:
+        print(f"Printing the book in reverse: {book.title}...")
+        print(book.content[::-1])

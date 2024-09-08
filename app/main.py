@@ -1,22 +1,22 @@
 from app.models import Book
 from app.services import (
-    ConsoleDisplay,
-    ReverseDisplay,
-    ConsolePrint,
-    ReversePrint
+    DisplayConsole,
+    DisplayReverse,
+    PrintConsole,
+    PrintReverse
 )
 from app.serializers import JsonSerializer, XmlSerializer
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
     display_mapping = {
-        "console": ConsoleDisplay("console"),
-        "reverse": ReverseDisplay("reverse")
+        "console": DisplayConsole(),
+        "reverse": DisplayReverse()
     }
 
     print_mapping = {
-        "console": ConsolePrint("console"),
-        "reverse": ReversePrint("reverse")
+        "console": PrintConsole(),
+        "reverse": PrintReverse()
     }
 
     serialize_mapping = {
